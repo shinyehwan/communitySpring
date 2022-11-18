@@ -1,5 +1,6 @@
 package com.ll.exam;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,17 +9,44 @@ import org.reflections.Reflections;
 
 import com.ll.exam.annotation.Controller;
 import com.ll.exam.article.ArticleController;
+import com.ll.exam.home.HomeController;
 
 public class Container {
 
 	private static final ArticleController articleController;
+	private static final HomeController homeController;
 
 	static {
-		articleController = new ArticleController();
+
+		try {
+			articleController = ArticleController.class.getDeclaredConstructor().newInstance();
+		} catch (InstantiationException e) {
+			throw new RuntimeException(e);
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(e);
+		} catch (InvocationTargetException e) {
+			throw new RuntimeException(e);
+		} catch (NoSuchMethodException e) {
+			throw new RuntimeException(e);
+		}
+
+		try {
+			homeController = HomeController.class.getDeclaredConstructor().newInstance();
+		} catch (InstantiationException e) {
+			throw new RuntimeException(e);
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(e);
+		} catch (InvocationTargetException e) {
+			throw new RuntimeException(e);
+		} catch (NoSuchMethodException e) {
+			throw new RuntimeException(e);
+		}
+
 	}
 	public static ArticleController getArticleController() {
 		return articleController;
 	}
+
 
 	public static List<String> getControllerNames() {
 		List<String> names = new ArrayList<>();
@@ -32,5 +60,7 @@ public class Container {
 		return names;
 	}
 
-
+	public static HomeController getHomeController() {
+		return homeController;
+	}
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import com.ll.exam.article.ArticleController;
+import com.ll.exam.home.HomeController;
 
 public class AppTest {
 	@Test
@@ -14,6 +15,19 @@ public class AppTest {
 		int rs = 10 + 20;
 		assertThat(rs).isEqualTo(30);
 	}
+
+	@Test
+	void ioc__homeController() {
+		HomeController homeController = Container.getHomeController();
+		assertThat(homeController).isNotNull();
+	}
+	@Test
+	void ioc__homeController__싱글톤() {
+		HomeController homeController1 = Container.getHomeController();
+		HomeController homeController2 = Container.getHomeController();
+		assertThat(homeController2).isEqualTo(homeController1);
+	}
+
 
 	@Test
 	void ioc__articleController() {
