@@ -1,5 +1,7 @@
 package com.ll.exam;
 
+import java.util.List;
+
 import com.ll.exam.article.ArticleController;
 
 public class Container {
@@ -13,4 +15,7 @@ public class Container {
 		return articleController;
 	}
 
+	public static List<String> getControllerNames() {
+		return List.of("home", "article");
+	}
 }
