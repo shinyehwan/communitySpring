@@ -4,24 +4,24 @@ import java.beans.Introspector;
 import java.lang.reflect.InvocationTargetException;
 
 public class Ut {
-	public static class cls{
+	public static class cls {
 
-		public static Object newObj(Class cls, Object defaultValue) {
+		public static <T> T newObj(Class<T> cls, T defaultValue) {
 			try {
 				return cls.getDeclaredConstructor().newInstance();
 			} catch (InstantiationException e) {
-				throw new RuntimeException(e);
+				return defaultValue;
 			} catch (IllegalAccessException e) {
-				throw new RuntimeException(e);
+				return defaultValue;
 			} catch (InvocationTargetException e) {
-				throw new RuntimeException(e);
+				return defaultValue;
 			} catch (NoSuchMethodException e) {
-				throw new RuntimeException(e);
+				return defaultValue;
 			}
 		}
 	}
 
-	public static class str{
+	public static class str {
 		public static String decapitalize(String string) {
 			if (string == null || string.length() == 0) {
 				return string;
