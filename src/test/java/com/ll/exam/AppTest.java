@@ -11,6 +11,7 @@ import com.ll.exam.article.controller.ArticleController;
 import com.ll.exam.article.repository.ArticleRepository;
 import com.ll.exam.article.service.ArticleService;
 import com.ll.exam.home.HomeController;
+import com.ll.exam.util.Ut;
 
 public class AppTest {
 	@Test
