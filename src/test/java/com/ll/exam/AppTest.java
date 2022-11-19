@@ -3,6 +3,7 @@ package com.ll.exam;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
@@ -80,5 +81,17 @@ public class AppTest {
 		ArticleRepository articleRepository = Ut.reflection.getFieldValue(articleService, "articleRepository", null);
 
 		assertThat(articleRepository).isNotNull();
+	}
+
+	@Test
+	public void ControllerManager__scanMappings() {
+		ControllerManager.init(); // 클래스를 강제로 로딩되게 하려는 목적
+	}
+
+	@Test
+	public void ControllerManager__라우트정보_개수() {
+		Map<String, RouteInfo> routeInfos = ControllerManager.getRouteInfosForTest();
+
+		assertThat(routeInfos.size()).isEqualTo(2);
 	}
 }
