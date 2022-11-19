@@ -8,6 +8,7 @@ import java.util.Map;
 import org.reflections.Reflections;
 
 import com.ll.exam.annotation.Controller;
+import com.ll.exam.annotation.Service;
 
 public class Container {
 
@@ -15,11 +16,29 @@ public class Container {
 
 	static {
 		objects = new HashMap<>();
+		scanComponents();
+	}
+
+	private static void scanComponents() {
+		scanServices();
+		scanControllers();
+	}
+
+	private static void scanServices() {
+		Reflections ref = new Reflections("com.ll.exam");
+		for (Class<?> cls : ref.getTypesAnnotatedWith(Service.class)){
+			objects.put(cls, Ut.cls.newObj(cls, null));
+		}
+	}
+
+	private static void scanControllers() {
 		Reflections ref = new Reflections("com.ll.exam");
 		for (Class<?> cls : ref.getTypesAnnotatedWith(Controller.class)){
 			objects.put(cls, Ut.cls.newObj(cls, null));
 		}
+
 	}
+
 	public static <T> T getObj(Class<T> cls) {
 		return (T)objects.get(cls);
 	}
