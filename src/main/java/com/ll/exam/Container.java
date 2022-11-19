@@ -1,6 +1,5 @@
 package com.ll.exam;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,8 +8,6 @@ import java.util.Map;
 import org.reflections.Reflections;
 
 import com.ll.exam.annotation.Controller;
-import com.ll.exam.article.ArticleController;
-import com.ll.exam.home.HomeController;
 
 public class Container {
 
