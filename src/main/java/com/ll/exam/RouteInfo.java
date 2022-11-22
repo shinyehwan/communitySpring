@@ -1,9 +1,9 @@
 package com.ll.exam;
 
+import java.lang.reflect.Method;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
-import java.lang.reflect.Method;
 
 @AllArgsConstructor
 public class RouteInfo {

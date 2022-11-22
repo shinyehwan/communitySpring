@@ -1,8 +1,8 @@
-package com.ll.exam.article.dto;
-
-import lombok.Data;
+package com.ll.exam;
 
 import java.time.LocalDateTime;
+
+import lombok.Data;
 
 @Data
 public class ArticleDto {
